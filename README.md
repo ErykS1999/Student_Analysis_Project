@@ -68,3 +68,57 @@ new_df
 - The result came out to the following:
 
 <img width="189" alt="Screenshot 2025-04-26 at 10 01 48" src="https://github.com/user-attachments/assets/758210af-4256-4990-8d39-a49a46c48ff9" />
+
+6- From now on, once getting familiar with the DataFrame, my next step was to create graphs. The first graph is a pie chart which which was created with the help of matplotlib was th comparison of study hours per gender. I have used matplotlib in order to calculate the percentage:
+
+ ```
+graph = new_df.plot(kind='pie',title='Hours Of Study Vs Gender',subplots=True,figsize=(8,8),autopct='%1.1f%%')
+
+
+for ax in graph:
+    ax.set_ylabel('')  # Removes the y-label (optional)
+    ax.set_xlabel('')  # Removes the x-label (optional)
+    ax.set_axis_off()  # Hides the axis completely
+  ```
+
+ - The result came out as follows:
+
+<img width="500" alt="Screenshot 2025-04-26 at 11 34 59" src="https://github.com/user-attachments/assets/fe2e48f2-87f5-40bf-9f29-2a5b6198ed08" />
+
+7- The second graph which was created was the bar graph. In order for the bar graph to make sense, I had to group the ages of the genders together:
+
+ ```
+grouped_data = data.head(10).groupby('age')['social_media_hours'].sum()
+ax = grouped_data.head(10).plot(title='Social Media Hours Per Day',kind='bar',x='age',y='social_media_hours')
+ax.set_xlabel('Age')
+ax.set_ylabel('Hours')
+  ```
+- The result showcases the first 10 results as .head(10) was used:
+<img width="441" alt="Screenshot 2025-04-26 at 11 36 59" src="https://github.com/user-attachments/assets/37d73865-5fab-40cb-aaa7-419e62fcf1bf" />
+
+8- The next step allowed me to caluclate the number one position of females that use netflix the most and analyse it myself. data.sort_values was used to only sort the values that mattered in this case, which was netflix_hours:
+
+ ```
+top_row = data.sort_values('netflix_hours', ascending=False).iloc[0]
+
+top_row
+  ```
+- The results came out as follows:
+  <img width="232" alt="Screenshot 2025-04-26 at 11 45 57" src="https://github.com/user-attachments/assets/a08fca67-d8a1-439a-a5c6-cdac733d65c9" />
+
+
+9- The following pie chart has been create using groupby methods as well as not forgetting autopct='%1.1f%%' technique to calculate the percentage of students that study after their part time jobs.
+
+ ```
+grouped = data.groupby('part_time_job')['study_hours_per_day'].sum()
+
+
+print(grouped)
+
+
+ax = grouped.head(10).plot(title='Job to study ratio',kind='pie',autopct='%1.1f%%')
+ax.set_ylabel('')
+  ```
+<img width="315" alt="Screenshot 2025-04-26 at 11 49 04" src="https://github.com/user-attachments/assets/93a5e242-9e8f-4a2b-a435-75898b516c44" />
+
+10 - 
