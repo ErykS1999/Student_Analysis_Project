@@ -121,4 +121,49 @@ ax.set_ylabel('')
   ```
 <img width="315" alt="Screenshot 2025-04-26 at 11 49 04" src="https://github.com/user-attachments/assets/93a5e242-9e8f-4a2b-a435-75898b516c44" />
 
-10 - 
+10 - After completing the pie chart successfully, the next challenge was the scatter graph. Does the number of hours slept have an impact on the school attendance? The results were taken from 1000 inputs. The pattern can be clearly seen:
+
+ ```
+ax = data.head(1000).plot(title='Hours of sleep vs Attendance', kind='scatter',x='sleep_hours',y='attendance_percentage')
+ax.set_xlabel('sleep hours')
+ax.set_ylabel('attendance percentage')
+  ```
+<img width="454" alt="Screenshot 2025-04-26 at 12 09 09" src="https://github.com/user-attachments/assets/eeb0d383-4219-4cff-8029-5e682f3664d9" />
+
+
+11 - The following scatter graph has been designed using the same techniques as below - for the x axis, attendance percentage has been used and for y axis the exam score:
+
+ ```
+ax = data.head(1000).plot(title='Attendance vs Exam Scores',kind='scatter',x='attendance_percentage', y='exam_score')
+  ```
+<img width="453" alt="Screenshot 2025-04-26 at 12 16 23" src="https://github.com/user-attachments/assets/8ab63a71-94ed-4f49-bc71-b79b7907e9e3" />
+
+12 - Aggregate function has been used to calculate the min,mean and max of students results - both male and female. This allowed us to showcase the results clearly in a table proving that female students tend to recieve better results.
+
+ ```
+samples = data.sample(1000)
+
+samples.groupby('gender')['exam_score'].agg(['min','mean','max'])
+ ```
+
+<img width="194" alt="Screenshot 2025-04-26 at 12 19 05" src="https://github.com/user-attachments/assets/620490a8-ad76-4b9b-9f47-6737cbfec807" />
+
+ - An appropriate graph has been created in order to easily read it ( based on 1000 values):
+   
+ ```
+random_graph = data.sample(1000)
+
+ax = random_graph.groupby('gender')['exam_score'].sum().plot(title='Exam scores vs Gender',kind='barh',x='gender',y='exam_score')
+
+ax.set_xlabel('exam score')
+ax.set_ylabel('gender')
+
+ax
+ ```
+
+<img width="479" alt="Screenshot 2025-04-26 at 12 20 23" src="https://github.com/user-attachments/assets/f873bd6a-05a5-4257-afa8-a5f593135ae2" />
+
+
+
+# THANK YOU FOR READING. ANY SUGGESTIONS GREATLY APPRECIATED. MORE PROJECTS VERY SOON.
+
